@@ -39,7 +39,6 @@
 
 	<!-- Includes the runtime dependencies to create the fat jar. -->
 	<build>
-		<finalName>commons-imaging-FINAL</finalName>
 		<plugins>
 
 			<!-- download source code in Eclipse, best practice -->
