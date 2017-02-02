@@ -8,6 +8,45 @@
 	<name>commonsimaging</name>
 	<description>Project to hold commons-imaging library</description>
 
+	<developers>
+        <developer>
+            <id>kumar</id>
+            <name>RAMAN</name>
+            <email>kumar.raman@lafaspot.com</email>
+        </developer>
+        <developer>
+            <id>lafa</id>
+            <name>Lafa</name>
+            <email>luis.alves@lafaspot.com</email>
+		</developer>
+	</developers>
+	
+	<scm>
+        <developerConnection>scm:git:https://github.com/lafaspot/commonsimaging.git</developerConnection>
+        <connection>scm:git:https://github.com/lafaspot/commonsimaging.git</connection>
+        <url>https://github.com/lafaspot/commonsimaging.git</url>
+        <tag>commonsimaging-1.0.0</tag>        
+	</scm>
+
+	<licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+	</distributionManagement>
+
 	<repositories>
 		<repository>
 			<id>local-lib</id>
@@ -85,6 +124,33 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.3</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+			
 			
 		</plugins>
 	</build>
